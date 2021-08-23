@@ -14,7 +14,7 @@ const proxyRoute = "/proxy";
 // proxy Handler
 app.use(`${proxyRoute}*`, (req,res,next)=>{
   //removeing extra pass
-	const url = (req)=>req.originalUrl.replace( new RegExp(`/\/?${proxyRoute}\/?/`,"i"),"");
+	const url = (req)=>req.originalUrl.replace( new RegExp(`\/?${proxyRoute}\/?`,"i"),"");
 	// send through the proxy
   return proxy(url(req) ,{proxyReqPathResolver:url })(req,res,next);
 });
